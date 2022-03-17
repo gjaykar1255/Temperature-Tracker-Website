@@ -1,0 +1,134 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+   font-family: 'Quicksand', sans-serif;
+}
+.main-containeer{
+    width:100vw;
+    height:100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.containeer{
+    width:350px;
+    height:500px;
+    background:rgba(55, 178, 173, 0.9); 
+    border-radius:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+.wave{
+    position: absolute;
+    width:100%;
+    height:100%;
+    background:rgba(183, 212, 240, 1);
+    top:50%;
+    z-index:-1;
+}
+.wave div{
+    border-width: 0;
+}
+.wave div:nth-child(1){
+    position: absolute;
+    width:990px;
+    height:1000px;
+    background-color: rgba(183, 212, 240, 1);
+    animation:wave 4s linear infinite;
+    border-radius:40%;
+    right:-89%;
+    top:-10%;
+}
+.wave div:nth-child(2){
+    position: absolute;
+    width:990px;
+    height:1000px;
+    background-color: rgba(183, 212, 240, 0.5);
+    animation:wave 3.5s linear infinite;
+    border-radius:40%;
+    right:-89%;
+    top:-10%;
+}
+.wave div:nth-child(3){
+    position: absolute;
+    width:1000px;
+    height:1000px;
+    background-color: rgba(183, 212, 240, 0.7);
+    animation:wave 3s linear infinite;
+    border-radius:40%;
+    right:-89%;
+    top:-10%;
+}
+.contentWriting{
+    width:100%;
+    height:100%;
+    z-index:4;
+    text-align: center;
+}
+@keyframes wave {
+    0%{
+        transform:rotate(0deg);
+    }
+    100%{
+        transform:rotate(360deg);
+    }
+}
+.fa-sun{
+    color: #eccc15;;
+    font-size: 4.3rem;
+    animation:motion 1s linear infinite alternate;
+}
+@keyframes motion {
+    from {
+        transform:scale(1.2);
+    }
+    to{
+        transform:scale((-0.9));
+    }
+}
+#f1{
+    margin-top:4rem;
+}
+.location{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin:5rem 0rem 0.8rem;
+    justify-content: center;
+    align-items: center;
+}
+.locationInfo .time{
+    color: rgba(9, 107, 99, 1);
+    font-weight: lighter;
+    font-size: 13.6px;
+}
+.TempInfo .Temp div{
+    color: rgba(9, 107, 99, 1);
+    margin-top:0.6rem;
+    font-weight: lighter;
+    font-size: 13.6px;
+}
+.location i{
+    font-size: 1.5rem;
+    margin-right:0.6rem;
+    color: white;
+    animation:rotates 3s linear infinite alternate;
+}
+@keyframes rotates{
+    from{
+        transform:translateX(-0.5rem);
+    }
+    to{
+        transform:translateX(0.5rem);
+    }
+}
+.locationInfo{
+    margin-bottom:3.69rem;
+}
+.Temp h2{
+    font-size: 4rem;
+}

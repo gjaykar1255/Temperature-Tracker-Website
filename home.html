@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--font awesome cdn-->
+    <script src="https://kit.fontawesome.com/7b82baee98.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+   font-family: 'Quicksand', sans-serif;
+}
+.main-containeer{
+    width:100vw;
+    height:100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.containeer{
+    width:350px;
+    height:500px;
+    background:rgba(55, 178, 173, 0.9); 
+    border-radius:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    z-index: -1;
+}
+.wave{
+    position: absolute;
+    width:100%;
+    height:100%;
+    background:rgba(183, 212, 240, 1);
+    top:50%;
+    z-index:-1;
+}
+.wave div{
+    border-width: 0;
+}
+.wave div:nth-child(1){
+    position: absolute;
+    width:990px;
+    height:1000px;
+    background-color: rgba(183, 212, 240, 1);
+    animation:wave 4s linear infinite;
+    border-radius:40%;
+    right:-89%;
+    top:-10%;
+}
+.wave div:nth-child(2){
+    position: absolute;
+    width:990px;
+    height:1000px;
+    background-color: rgba(183, 212, 240, 0.5);
+    animation:wave 3.5s linear infinite;
+    border-radius:40%;
+    right:-89%;
+    top:-10%;
+}
+.wave div:nth-child(3){
+    position: absolute;
+    width:1000px;
+    height:1000px;
+    background-color: rgba(183, 212, 240, 0.7);
+    animation:wave 3s linear infinite;
+    border-radius:40%;
+    right:-89%;
+    top:-10%;
+}
+.contentWriting{
+    width:100%;
+    height:100%;
+    z-index:4;
+    text-align: center;
+}
+@keyframes wave {
+    0%{
+        transform:rotate(0deg);
+    }
+    100%{
+        transform:rotate(360deg);
+    }
+}
+
+.f1 .fas{
+    font-size: 4.3rem;
+    animation:motion 1s linear infinite alternate;
+}
+.fa-sun{
+    color: #eccc68;
+}
+.fa-cloud{
+    color: rgba(0, 48, 239, 0.6)
+}
+.fa-cloud-rain{
+    color: #a4b0be;
+}
+@keyframes motion {
+    from {
+        transform:scale(1.2);
+    }
+    to{
+        transform:scale((-0.9));
+    }
+}
+
+.f1{
+    margin-top:4rem;
+}
+.location{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin:5rem 0rem 0.8rem;
+    justify-content: center;
+    align-items: center;
+}
+.locationInfo .time{
+    color: rgba(9, 107, 99, 1);
+    font-weight: lighter;
+    font-size: 13.6px;
+}
+.TempInfo .Temp div{
+    color: rgba(9, 107, 99, 1);
+    margin-top:0.6rem;
+    font-weight: lighter;
+    font-size: 13.6px;
+}
+.location #p{
+    font-size: 1.5rem;
+    margin-right:0.6rem;
+    color: white;
+    animation:rotates 3s linear infinite alternate;
+}
+@keyframes rotates{
+    from{
+        transform:translateX(-0.5rem);
+    }
+    to{
+        transform:translateX(0.5rem);
+    }
+}
+.locationInfo{
+    margin-bottom:3.69rem;
+}
+.Temp h2{
+    font-size: 4rem;
+}
+    </style>
+    <!--google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet"> 
+    <title>My Weather Website</title>
+</head>
+<body>
+    <div class="main-containeer">
+    <div class="containeer">
+        <div class="contentWriting">
+            <div class="f1">
+                <i  class="fas" ></i>
+            </div>
+            <div class="locationInfo">
+                <div class="location">
+                    <i id="p" class="fas fa-street-view"></i>
+                    <h2>{%location%},{%country%}</h2>
+                </div>
+                <div class="time">WED | OCT | 23 |10:40 AM</div>
+            </div>
+            <div class="TempInfo">
+                <div class="Temp">
+                    <h2 id="tempShow">{%tempval%}</h2>
+                    <div>Min {%tempMin%} | Max {%tempMax%}</div>
+                </div>
+            </div>
+        </div>
+        <div class="wave">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    </div>
+    <script>
+        var tempStatus="{%currentWeather%}";
+      var target=document.querySelector('.fas').classList;
+      if (tempStatus == "Sunny") target.add('fa-sun');
+      else if (tempStatus == "Clouds")  target.add('fa-cloud'); 
+      else if (tempStatus == "Rainy") target.add('fa-cloud-rain');
+      else target.add('fa-cloud');
+      
+        const today=new Date();
+        const month=today.toLocaleString('default',{
+            month:'long'
+        });
+        const day=today.toLocaleDateString('default',{
+            weekday:'long'
+        });
+        const time= today.toLocaleString('default', { hour: 'numeric', hour12: true,minute:'numeric' })
+        document.querySelector('.time').innerHTML=`${day} | ${month} | ${time}`;
+    </script>
+</body>
+</html>
